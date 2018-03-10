@@ -6,3 +6,4 @@ module.exports = router
     .get('/', (req, res) => res.status(200).send({ message: 'Welcome to To-Do-Fancy-API' }))
     .post('/signin', signin)
     .post('/signup', signup)
+    .use('/todo', require('./todo.route'));

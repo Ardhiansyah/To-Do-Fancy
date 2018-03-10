@@ -18,7 +18,8 @@ module.exports = mongoose.model('User', new Schema({
             }
         }
     },
-    password: String
+    password: String,
+    todo: [{ type: Schema.ObjectId, ref: 'Todo' }]
 })
 .plugin(timestamps)
 .plugin(uniqueValidator)
