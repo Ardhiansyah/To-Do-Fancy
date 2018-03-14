@@ -1,3 +1,4 @@
+'use strict'
 const timestamps = require('mongoose-timestamp');
 const uniqueValidator = require('mongoose-unique-validator');
 const mongoose = require('mongoose');
