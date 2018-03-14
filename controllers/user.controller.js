@@ -1,3 +1,4 @@
+'use strict'
 const FB = require('fb');
 const User = require('../models/user.model');
 const token = require('../middlewares/token.middleware');

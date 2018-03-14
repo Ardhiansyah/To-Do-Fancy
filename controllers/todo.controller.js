@@ -1,3 +1,4 @@
+'use strict'
 const Todo = require('../models/todo.model');
 const User = require('../models/user.model');
 
