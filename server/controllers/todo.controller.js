@@ -18,10 +18,7 @@ module.exports = {
 
     create_todo: (req, res) => {
         let new_todo = new Todo({
-            title: req.body.title,
-            category: req.body.category,
-            description: req.body.description,
-            deadline: req.body.deadline
+            description: req.body.description
         });
         
         new_todo.save(err => {
@@ -54,7 +51,7 @@ module.exports = {
     delete_todo: (req, res) => {
         User.findById(req.body.id, (err, user) => {
             if (err) return res.status(500).send({ message: err });
-
+            
             user.todo.remove(req.params.id);
             user.save(err => {
                 if (err) return res.status(500).send({ message: err });

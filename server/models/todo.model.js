@@ -4,9 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Todo', new Schema({
-    title: String,
-    category: String,
+    checked: { type: Boolean, default: false },
     description: String,
-    deadline: Date
 })
 .plugin(timestamps));

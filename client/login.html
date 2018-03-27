@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./lib/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="navbar">
+      <div class="logo">to-do</div>
+      <div class="info"></div>
+      <div class="logout">
+        <a data-toggle="modal" data-target="#loginModal">login</a>
+        <a data-toggle="modal" data-target="#registerModal">register</a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="text-container">
+        <div class="title">To-Do-Fancy</div>
+        <div class="sub-title">To-Do-List with the power of Vue.js</div>
+      </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="registerModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Register Form</h5>
+            <button style="right:1em;top:1em;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input class="form-control btn btn-primary" type="submit" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onclick="checkLoginState()" id="fb-login" value="Register Using Facebook">
+            </div>
+            <form id="register-form">
+              <div class="form-group">
+                <label for="name-register">Name</label>
+                <input class="form-control" type="text" name="name-register" id="name-register" v-model="name">
+              </div>
+              <div class="form-group">
+                <label for="email-register">Email</label>
+                <input class="form-control" type="email" name="email-register" id="email-register" v-model="email">
+              </div>
+              <div class="form-group">
+                <label for="password-register">Password</label>
+                <input class="form-control" type="password" name="password-register" id="password-register" v-model="password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" @click="register()">Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login Form</h5>
+            <button style="right:1em;top:1em;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input class="form-control btn btn-primary" type="submit" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onclick="checkLoginState()" id="fb-login" value="Login Using Facebook">
+            </div>
+            <form id="login-form">
+              <div class="form-group">
+                <label for="email-login">Email</label>
+                <input class="form-control" type="email" name="email-login" id="email-login" v-model="email">
+              </div>
+              <div class="form-group">
+                <label for="password-login">Password</label>
+                <input class="form-control" type="password" name="password-login" id="password-login" v-model="password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" @click="login()">Login</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- </div> -->
+    <div class="footer">
+      <div class="footer-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae massa id metus vestibulum finibus cursus vel lacus. Etiam tincidunt, nisl quis mattis finibus, augue neque blandit metus, ac mollis massa eros quis massa. Cras iaculis ultrices fermentum. Nam dictum accumsan velit quis mollis. Praesent elit justo, convallis vitae ex in, faucibus congue leo. Quisque aliquet sit amet augue vitae ornare. Sed quis aliquam erat. Ut varius viverra diam, nec lobortis enim ultricies at. Aliquam erat volutpat. Phasellus tempus quam in molestie pretium. Fusce elementum enim eu posuere pharetra.</div>
+      <div class="footer-right"> Morbi lacinia pharetra fermentum. Curabitur sapien mi, feugiat non sollicitudin ac, placerat non urna. Suspendisse ac vehicula felis. Donec congue interdum dui, sit amet consequat velit commodo nec. Nam malesuada mi purus, sed imperdiet nisl sodales at. Pellentesque vel consectetur ex, convallis facilisis justo. Aliquam rutrum, eros ac aliquet posuere, arcu nibh mattis nisi, sit amet congue turpis mauris sed diam.
+
+      Integer at feugiat tellus. Phasellus luctus ornare hendrerit. Sed tincidunt purus at tincidunt bibendum. Nunc finibus ultricies felis at convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus bibendum, lorem eu efficitur tincidunt, ligula mauris sagittis nunc, quis scelerisque nibh ipsum sed urna. Fusce vitae massa mi. Aliquam quis sollicitudin massa. Etiam iaculis finibus mauris. Sed non ante facilisis, commodo libero quis, condimentum odio. Vivamus sit amet neque quis libero dictum lacinia et eu ligula. Phasellus efficitur euismod eros. Cras quis bibendum eros, et ultricies neque. Pellentesque ut elit ac ex dictum iaculis vel eget metus. Pellentesque et magna sed odio gravida pulvinar.</div>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return {
+        name: '',
+        email: '',
+        password: '',
+      };
+    },
+    methods: {
+      login: function() {
+        axios.post('http://localhost:3000/signin', {
+          email: this.email,
+          password: this.password
+        })
+        .then(({data}) => {
+          localStorage.token = data.token;
+          window.location = '/index.html';
+          this.email = '';
+          this.password = '';
+        })
+        .catch(err => console.error(err))
+      },
+      register: function() {
+        console.log('klik');
+        axios.post('http://localhost:3000/signup', {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+        .then(({data}) => {
+          localStorage.token = data.token;
+          window.location = '/index.html';
+          this.name = '';
+          this.email = '';
+          this.password = '';
+        })
+        .catch(err => console.error(err))
+      },
+    }
+  })
+</script>
+<script>
+  </script>
+  <script>
+    function statusChangeCallback(response) {
+      FB.login(response => {
+          if (response.status === 'connected') {
+              axios.post('http://localhost:3000/signin', {}, {
+                  headers: {
+                      access_token: response.authResponse.accessToken
+                  }
+              })
+              .then(function(response) {
+                if (response.status === 200) {
+                  localStorage.token = response.data.token;
+                  window.location = '/index.html';
+                }
+              });
+          } else {
+              console.log('belum login');
+          }
+      })
+    }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '369326503475419',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.12'
+    });
+  };
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.12&appId=369326503475419&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+    
+</script>
+</html>

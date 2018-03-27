@@ -26,4 +26,5 @@ module.exports = mongoose.model('User', new Schema({
 .plugin(uniqueValidator)
 .pre('save', function() {
     if (this.password) this.password = hash.generate(this.password);
+    console.log(this.password);
 }));

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To-Do-Fancy</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./lib/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="navbar">
+      <div class="logo">to-do</div>
+      <div class="info">{{ user.name }}</div>
+      <div id="logout" class="logout"><a href="./login.html">logout</a></div>
+    </div>
+    <div class="main">
+      <div id="myDIV" class="header">
+        <h2 style="margin:5px">My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span @click="addTodo" class="addBtn">Add</span>
+      </div>
+
+      <list-todo
+        :todos="todos"
+        @change-todo="changeTodo"
+        @remove-todo="removeTodo"
+      ></list-todo>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="./lib/vue/main.js"></script>
+  <script src="./lib/vue/components/List.js"></script>
+  <script>
+    $('#logout').click(e => {
+      delete localStorage.token;
+    });
+  </script>
+</html>

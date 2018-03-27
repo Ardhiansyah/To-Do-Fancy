@@ -11,6 +11,7 @@ module.exports = {
                 if (data.error) return res.status(500).send({ message: data.error });
                 
                 User.findOne({ email: data.email }, (err, user) => {
+                    console.log(user);
                     if (!user) {
                         let new_user = new User({
                             name: data.name,
@@ -25,18 +26,20 @@ module.exports = {
                             });
                         })
                     }
-                    
-                    return res.status(200).send({
-                        message: 'signin success',
-                        token: token.generate({ id: user._id, name: user.name, email: user.email })
-                    });
+                    else {
+                        return res.status(200).send({
+                            message: 'signin success',
+                            token: token.generate({ id: user._id, name: user.name, email: user.email })
+                        });
+                    }
                 })
             })
         }
         else {
             User.findOne({ email: req.body.email }, (err, user) => {
                 if (!user) return res.status(404).send({ message: 'Wrong Email' });
-
+                
+                console.log(req.body.password, user.password);
                 if (!hash.compare(req.body.password, user.password)) return res.status(404).send({ message: 'Wrong Password' });
                 
                 return res.status(200).send({ 
@@ -49,7 +52,7 @@ module.exports = {
 
     signup: (req, res) => {
         let new_user = new User(req.body);
-
+        
         new_user.save(err => {
             if (err) return res.status(500).send({ message: err });
 
